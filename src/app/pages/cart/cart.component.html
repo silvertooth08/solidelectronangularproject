@@ -14,7 +14,7 @@
     <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let element">
-            <p class="truncate max-w-xs">{{element.name}}</p>
+            <span class="truncate max-w-xs block">{{element.name}}</span>
         </td>
         <td mat-footer-cell *matFooterCellDef>
         </td>
@@ -30,7 +30,15 @@
       <ng-container matColumnDef="quantity">
         <th mat-header-cell *matHeaderCellDef>Quantity</th>
         <td mat-cell *matCellDef="let element">
-          {{element.quantity}}
+          <button mat-icon-button>
+            <mat-icon>remove</mat-icon>
+          </button>
+          <span>
+            {{element.quantity}}
+          </span>
+          <button mat-icon-button>
+            <mat-icon>add</mat-icon>
+          </button>
         </td>
         <td mat-footer-cell *matFooterCellDef>
         </td>
@@ -38,12 +46,12 @@
       <ng-container matColumnDef="total">
         <th mat-header-cell *matHeaderCellDef>Total</th>
         <td mat-cell *matCellDef="let element">
-          {{element.total}}
-            <span class="font-bold py-5 block">
-                {{ getTotal(cart.items) | currency}}
-            </span>
+          {{(element.quantity * element.price) | currency}}
         </td>
         <td mat-footer-cell *matFooterCellDef>
+          <span class="font-bold py-5 block">
+            {{ getTotal(cart.items) | currency}}
+        </span>
         </td>
       </ng-container>
       <ng-container matColumnDef="action">
@@ -57,6 +65,9 @@
         </button>
         </td>
         <td mat-footer-cell *matFooterCellDef>
+          <button mat-raised-button color="primary" class="float-right">
+            Proceed To Checkout
+          </button>
         </td>
       </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
