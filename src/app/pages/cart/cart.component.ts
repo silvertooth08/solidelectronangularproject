@@ -1,6 +1,6 @@
 import { getNumberOfCurrencyDigits } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Cart, CartItem } from 'src/app/models/cart.models';
+import { Cart, CartItem } from 'src/app/models/cart.model';
 
 @Component({
   selector: 'app-cart',
