@@ -53,7 +53,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [CartService, StoreService],
   bootstrap: [AppComponent]

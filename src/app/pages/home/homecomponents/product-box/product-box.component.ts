@@ -7,7 +7,6 @@ import { Product } from 'src/app/models/product.model';
 export class ProductBoxComponent implements OnInit {
   @Input() fullWidthMode = false;
   @Input() product: Product | undefined;
-  
   @Output() addToCart = new EventEmitter();
 
   constructor() { }
