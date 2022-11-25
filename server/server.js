@@ -13,15 +13,19 @@ const stripe = require("stripe")("sk_test_51M7q4jH2dumVHfbArK2KClLee89fVsqwXVm4S
 app.post("/checkout", async (req, res, next ) => {
     try {
         const session = await stripe.checkout.sessions.create({
-            line_items: req.body.items.map((item) => ({
-            currency: "usd",
-            product_data: {
-                name: item.name,
-                images: [item.product]
-            },
-            //unit amount is priced in cents so multiplied by 100 for dollar
-            unit_amount: item.price * 100 
-            })),
+            line_items: req.body.items.map((item) => (
+                {
+                    price_data: {
+                     currency: 'usd', 
+                     product_data: {
+                        name: item.name,
+                        images: [item.product]
+                    }, 
+                    //item.price is in cents so it is multiplied to show in dollars
+                    unit_amount: item.price * 100,
+                },
+                quantity: item.quantity,
+        })),
             mode: "payment",
             success_url:"http://localhost:4200/success.html",
             cancel_url:"http://localhost:4200/cancel.html"
