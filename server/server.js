@@ -26,7 +26,10 @@ app.post("/checkout", async (req, res, next ) => {
             success_url:"http://localhost:4200/success.html",
             cancel_url:"http://localhost:4200/cancel.html"
         });
+        res.status(200).json(session);
     }catch (error) {
-
+      next(error);
     }
 });
+
+app.listen(4200, () => console.log('app is running on 4200'));
