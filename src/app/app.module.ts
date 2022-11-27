@@ -25,7 +25,13 @@ import { ProductBoxComponent } from './pages/home/homecomponents/product-box/pro
 import { CartComponent } from './pages/cart/cart.component';
 import { CartService } from './services/cart.service';
 import { StoreService } from './services/store.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatFormFieldModule,} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { SearchComponent } from './search/search.component';
+// import { SignupComponent } from './signup/signup.component';
+// import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +41,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ProductsHeaderComponent,
     FiltersComponent,
     ProductBoxComponent,
-    CartComponent
+    CartComponent,
+    SearchComponent,
+   // SignupComponent,
+    // LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +62,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
+    
   ],
   providers: [CartService, StoreService],
   bootstrap: [AppComponent]
