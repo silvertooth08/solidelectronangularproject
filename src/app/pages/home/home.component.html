@@ -5,7 +5,8 @@ class="min-h-full max-w-7xl mx-auto border-x">
     <app-filters (showCategory)="onShowCategory($event)"></app-filters>
   </mat-drawer>
   <mat-drawer-content class="p-6">
-    <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+    <app-search (searchTextChanged)="onSearchTextEntered($event)"
+    class="justify-self-center w-full"></app-search>
    <app-products-header (columnsCountChange)="onColumnsCountChange($event)"
    (itemsCountChange)="onItemsCountChange($event)"
    (sortChange)="onSortChange($event)"></app-products-header>
