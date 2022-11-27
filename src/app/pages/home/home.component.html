@@ -5,6 +5,7 @@ class="min-h-full max-w-7xl mx-auto border-x">
     <app-filters (showCategory)="onShowCategory($event)"></app-filters>
   </mat-drawer>
   <mat-drawer-content class="p-6">
+    <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
    <app-products-header (columnsCountChange)="onColumnsCountChange($event)"
    (itemsCountChange)="onItemsCountChange($event)"
    (sortChange)="onSortChange($event)"></app-products-header>
@@ -13,12 +14,14 @@ class="min-h-full max-w-7xl mx-auto border-x">
     [cols]="cols"
     [rowHeight]="rowHeight"
     >
-   <mat-grid-tile *ngFor="let product of products">
-     <app-product-box 
-     [product]="product"
-     (addToCart)="onAddToCart($event)"
-     [fullWidthMode]= "cols === 1" class="w-full"> </app-product-box>
-    </mat-grid-tile>
+    <ng-container *ngFor="let product of products">
+      <mat-grid-tile *ngIf="searchText === '' || product.title.toLowerCase().includes(searchText)">
+        <app-product-box 
+        [product]="product"
+        (addToCart)="onAddToCart($event)"
+        [fullWidthMode]= "cols === 1" class="w-full"> </app-product-box>
+       </mat-grid-tile>
+    </ng-container>
    </mat-grid-list>
   </mat-drawer-content>
 </mat-drawer-container>

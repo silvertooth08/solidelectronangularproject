@@ -61,6 +61,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   this.getProducts();
   }
 
+  searchText: string ='';
+  onSearchTextEntered(searchValue: string){
+   this.searchText = searchValue;
+  }
+
  ngOnDestroy(): void {
   if(this.productsSubscription) {
     this.productsSubscription.unsubscribe();

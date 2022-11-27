@@ -28,4 +28,5 @@ export class ProductsHeaderComponent implements OnInit {
  onColumnsUpdate(colsNum: number): void {
  this.columnsCountChange.emit(colsNum);
  }
+ 
 }
